@@ -1,4 +1,5 @@
 class Pessoa:
+    olhos = 2
 
     def __init__(self, *filhos, nome=None, idade=35):
         self.idade = idade
@@ -7,6 +8,7 @@ class Pessoa:
 
     def cumprimentar(self):
         return f'Olá {id(self)}'
+
 
 if __name__ == '__main__':
     renzo = Pessoa(nome="renzo")
@@ -20,5 +22,19 @@ if __name__ == '__main__':
         print(filho.nome)
     luciano.sobrenome = "Ramalho"
     del luciano.filhos
-    print(luciano.__dict__)
+    luciano.olhos = 1
+    print(luciano.__dict__) #mostra os atributos de instância de um objeto
     print(renzo.__dict__)
+    Pessoa.olhos = 3
+    print(Pessoa.olhos)
+    print(luciano.olhos)
+    print(renzo.olhos)
+    print(id(luciano.olhos), id(renzo.olhos), id(Pessoa.olhos))
+    del luciano.olhos
+    print(luciano.__dict__) #mostra os atributos de instância de um objeto
+    print(renzo.__dict__)
+    print(Pessoa.olhos)
+    print(luciano.olhos)
+    print(renzo.olhos)
+    print(id(luciano.olhos), id(renzo.olhos), id(Pessoa.olhos))
+
