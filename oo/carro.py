@@ -94,12 +94,11 @@ Exemplo:
     'Oeste'
 """
 
-
 class Motor:
-    def __init_(self, velocidade = 0):
-        self.velocidade = velocidade
+    def __init__(self):
+        self.velocidade = 0
 
-    def acelera(self):
+    def acelerar(self):
         self.velocidade += 1
 
     def frear(self):
@@ -112,27 +111,28 @@ class Motor:
 
 class Direcao:
     rotacao_direcao = {1: 'Norte', 2: 'Leste', 3: 'Sul', 4: 'Oeste'}
+    rotacao_valor = 1
 
     def __init__(self):
-        self.valor = 1
+        self.valor = self.rotacao_direcao[self.rotacao_valor]
 
-
-    def gira_a_direita(self):
-        if self.valor >= 4:
-            self.valor = 1
+    def girar_a_direita(self):
+        if self.rotacao_valor >= 4:
+            self.rotacao_valor = 1
         else:
-            self.valor += 1
-        return self.rotacao_direcao[self.valor]
+            self.rotacao_valor += 1
+        self.valor = self.rotacao_direcao[self.rotacao_valor]
 
-    def gira_a_esquerda(self):
-        if self.valor <= 1:
-            self.valor = 4
+
+    def girar_a_esquerda(self):
+        if self.rotacao_valor <= 1:
+            self.rotacao_valor = 4
         else:
-            self.valor -= 1
-        return self.rotacao_direcao[self.valor]
+            self.rotacao_valor -= 1
+        self.valor = self.rotacao_direcao[self.rotacao_valor]
 
 
-class Carros:
+class Carro:
     def __init__(self, direcao, motor):
         self.motor = motor
         self.direcao = direcao
@@ -141,16 +141,16 @@ class Carros:
         return self.motor.velocidade
 
     def acelerar(self):
-        self.motor.acelera()
+        self.motor.acelerar()
 
-    def frea(self):
-        self.motor.frea()
+    def frear(self):
+        self.motor.frear()
 
     def calcular_direcao(self):
         return self.direcao.valor
 
     def girar_a_direita(self):
-        self.direcao.gira_a_direita()
+        self.direcao.girar_a_direita()
 
     def girar_a_esquerda(self):
-        self.direcao.gira_a_direita()
+        self.direcao.girar_a_esquerda()
