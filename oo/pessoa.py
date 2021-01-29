@@ -20,8 +20,11 @@ class Pessoa:
 class Homem(Pessoa): # Classe Homem herda de Pessoa os atributos
     pass
 
+class Mutante(Pessoa): # Classe Homem herda de Pessoa os atributos
+    olhos = 3
+
 if __name__ == '__main__':
-    renzo = Homem(nome="renzo")
+    renzo = Mutante(nome="renzo")
     luciano = Homem(renzo, nome="Luciano")
     print(Pessoa.cumprimentar(luciano))
     print(id(luciano))
@@ -35,7 +38,7 @@ if __name__ == '__main__':
     luciano.olhos = 1
     print(luciano.__dict__) #mostra os atributos de instância de um objeto
     print(renzo.__dict__)
-    Pessoa.olhos = 3
+    # Pessoa.olhos = 3
     print(Pessoa.olhos)
     print(luciano.olhos)
     print(renzo.olhos)
@@ -54,3 +57,4 @@ if __name__ == '__main__':
     print(isinstance(pessoa, Homem))
     print(isinstance(renzo, Pessoa))
     print(isinstance(renzo, Homem))
+    print(renzo.olhos)
